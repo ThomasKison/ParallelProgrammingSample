@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ParallelProgramming"
+             x:Class="ParallelProgramming.MainPage">
+    <StackLayout>
+	    <Label Text="Welcome to Xamarin.Forms!" 
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+        <Label Text="{Binding DownloadedBytes}" />
+        
+        <ListView ItemsSource="{Binding Files}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal">
+            <Entry Text="1" x:Name="count" />
+            <Button Command="{Binding DownloadFileCommand}" CommandParameter="{Binding Source={x:Reference count}, Path=Text }" Text="Start Download"/>
+            <Button Command="{Binding CalculatePrimeCommand}" CommandParameter="{Binding Source={x:Reference count}, Path=Text }" Text="Berechne Primzahlen"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
